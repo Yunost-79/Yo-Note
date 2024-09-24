@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  overflow: hidden;
+
+  background-image: linear-gradient(to bottom right, #1a1a1a, #14532d, #064e3b);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper {
+    min-height: 100vh;
+    max-width: 124rem;
+    width: 100%;
+  }
+}
