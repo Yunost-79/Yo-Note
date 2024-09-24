@@ -1,0 +1,164 @@
+@import '../../../../../index.scss';
+
+.input {
+  width: 100%;
+  transition: 0.3s ease;
+
+  &:hover {
+    transition: 0.3s ease;
+
+    .input_form {
+      border-color: $DARK_SECONDARY_GREEN;
+
+      .input_item {
+        color: rgba($DARK_SECONDARY_GREEN, 0.6);
+      }
+    }
+  }
+
+  &.error {
+    animation: shake 0.3s ease;
+    animation-iteration-count: 1;
+
+    .input_form {
+      border-color: rgba($ERROR, 0.8);
+
+      &:focus-within {
+        border-color: $ERROR;
+
+        .input_item {
+          color: $ERROR;
+
+          input {
+            color: $ERROR;
+
+            &::placeholder {
+              color: $ERROR;
+            }
+          }
+        }
+      }
+
+      .input_item {
+        input {
+          color: rgba($ERROR, 0.6);
+
+          &::placeholder {
+            color: rgba($ERROR, 0.8);
+          }
+        }
+      }
+
+      .show_button {
+        color: rgba($ERROR, 0.6);
+
+        &:hover {
+          color: $ERROR;
+        }
+      }
+    }
+  }
+
+  .input_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: none;
+    border: 0.125rem solid $DARK_PRIMAL_GREY;
+    background-color: transparent;
+    transition: 0.3s ease;
+
+    &:focus-within {
+      border-color: $DARK_SECONDARY_GREEN;
+
+      .input_item {
+        color: $DARK_SECONDARY_GREEN;
+
+        &.password {
+          input {
+            color: $DARK_SECONDARY_GREEN;
+          }
+        }
+
+        input {
+          color: $WHITE;
+
+          &::placeholder {
+            color: $DARK_SECONDARY_GREEN;
+          }
+        }
+      }
+
+      .show_button {
+        color: rgba($DARK_SECONDARY_GREEN, 0.6);
+
+        &:hover {
+          color: $DARK_SECONDARY_GREEN;
+        }
+      }
+    }
+
+    .input_item {
+      width: 100%;
+      color: $DARK_PRIMAL_GREY;
+
+      input {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        color: inherit;
+
+        &::placeholder {
+          color: $DARK_PRIMAL_GREY;
+          transition: 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .show_button {
+    color: $DARK_PRIMAL_GREY;
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: $DARK_SECONDARY_GREEN;
+    }
+  }
+
+  .helper-text {
+    color: $ERROR;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: $WHITE;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-0.25rem);
+  }
+  50% {
+    transform: translateX(0.25rem);
+  }
+  75% {
+    transform: translateX(-0.25rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
