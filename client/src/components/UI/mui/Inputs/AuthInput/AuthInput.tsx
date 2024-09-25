@@ -4,7 +4,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import './AuthInput.scss';
 
-interface IAuthInput {
+interface AuthInput {
   className?: string;
   name?: string;
   type: string;
@@ -16,7 +16,7 @@ interface IAuthInput {
   helperText?: string | false | undefined;
 }
 
-const AuthInput: React.FC<IAuthInput> = ({
+const AuthInput: React.FC<AuthInput> = ({
   className,
   name,
   type,

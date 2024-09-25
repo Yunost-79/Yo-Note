@@ -1,13 +1,15 @@
 import { Link } from '@mui/material';
 
-import AuthInput from '../../components/UI/mui/Inputs/AuthInput/AuthInput';
-import AuthButton from '../../components/UI/mui/Buttons/AuthButton/AuthButton';
+import AuthInput from '../../../components/UI/mui/Inputs/AuthInput/AuthInput';
+import AuthButton from '../../../components/UI/mui/Buttons/AuthButton/AuthButton';
 
-import { ERoutePaths } from '../../types/ERoutePaths';
+import '../AuthPage.scss';
 
-import './AuthPage.scss';
+interface Login {
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const LoginPage = () => {
+const Login: React.FC<Login> = ({ setIsLogin }) => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
@@ -25,10 +27,10 @@ const LoginPage = () => {
       </div>
       <div className="auth_footer">
         <span>Don`t have an account?</span>
-        <Link href={ERoutePaths.register}>Register</Link>
+        <Link onClick={() => setIsLogin(false)}>Register</Link>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default Login;

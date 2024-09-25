@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 
 import MainPage from './pages/MainPage/MainPage';
-import LoginPage from './pages/AuthPage/LoginPage';
-import RegisterPage from './pages/AuthPage/RegisterPage';
+import AuthPage from './pages/AuthPage/AuthPage';
+import ErrorPageNotFound from './pages/ErrorPage/ErrorPageNotFound';
 
 import AuthFloatingShape from './components/FloatingShape/AuthFloatingShape';
 
+import PrivateRoute from './utils/usePrivateRoutes';
 import { useThemeStore } from './zustand/useThemeStore';
-import usePrivateRoutes from './utils/usePrivateRoutes';
 import { ERoutePaths } from './types/ERoutePaths';
 
 import { ETheme } from './types/ETheme';
@@ -16,7 +16,6 @@ import { ETheme } from './types/ETheme';
 import './App.scss';
 
 const App = () => {
-  const { ProtectedRoute, AuthRoute } = usePrivateRoutes();
   const { theme } = useThemeStore();
 
   useEffect(() => {
@@ -28,32 +27,13 @@ const App = () => {
       <div className="wrapper">
         <AuthFloatingShape />
         <Routes>
-          <Route
-            path={ERoutePaths.main}
-            element={
-              <ProtectedRoute>
-                <MainPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={ERoutePaths.auth} element={<AuthPage />} />
 
+          <Route element={<PrivateRoute />}>
+            <Route path={ERoutePaths.main} element={<MainPage />} />
+          </Route>
 
-          <Route
-            path={ERoutePaths.login}
-            element={
-              <AuthRoute>
-                <LoginPage />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={ERoutePaths.register}
-            element={
-              <AuthRoute>
-                <RegisterPage />
-              </AuthRoute>
-            }
-          />
+          <Route path="*" element={<ErrorPageNotFound />} />
         </Routes>
       </div>
     </div>

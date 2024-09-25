@@ -3,14 +3,20 @@ import React from 'react';
 
 import './AuthButton.scss';
 
-interface IAuthButton {
+interface AuthButton {
   className?: string;
   placeholder: string;
   type?: 'submit' | 'button' | 'reset';
+  onClick?: () => void;
 }
-const AuthButton: React.FC<IAuthButton> = ({ className, placeholder, type }) => {
+const AuthButton: React.FC<AuthButton> = ({ className, placeholder, type, onClick }) => {
   return (
-    <Button className={`auth_button ${className}`} variant="contained" type={type}>
+    <Button
+      className={`auth_button ${className}`}
+      variant="contained"
+      type={type}
+      onClick={onClick}
+    >
       {placeholder}
     </Button>
   );

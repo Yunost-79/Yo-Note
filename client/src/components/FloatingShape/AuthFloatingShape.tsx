@@ -21,8 +21,22 @@ const AuthFloatingShape = () => {
         color="#84CC16"
         size={{ width: '128px', height: '128px' }}
         top="40%"
-        left="-10%"
+        left="80%"
         delay={2}
+      />
+      <FloatingShape
+        color="#4CAF50"
+        size={{ width: '128px', height: '128px' }}
+        top="10%"
+        left="80%"
+        delay={10}
+      />
+      <FloatingShape
+        color="#84CC16"
+        size={{ width: '256px', height: '256px' }}
+        top="50%"
+        left="10%"
+        delay={0}
       />
     </div>
   );
