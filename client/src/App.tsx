@@ -5,9 +5,7 @@ import MainPage from './pages/MainPage/MainPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import ErrorPageNotFound from './pages/ErrorPage/ErrorPageNotFound';
 
-import AuthFloatingShape from './components/FloatingShape/AuthFloatingShape';
-
-import PrivateRoute from './utils/usePrivateRoutes';
+import usePrivateRoutes from './utils/usePrivateRoutes';
 import { useThemeStore } from './zustand/useThemeStore';
 import { ERoutePaths } from './types/ERoutePaths';
 
@@ -16,6 +14,7 @@ import { ETheme } from './types/ETheme';
 import './App.scss';
 
 const App = () => {
+  const { PrivateRoute, AuthRoute } = usePrivateRoutes();
   const { theme } = useThemeStore();
 
   useEffect(() => {
@@ -25,11 +24,24 @@ const App = () => {
   return (
     <div className="App">
       <div className="wrapper">
-        <AuthFloatingShape />
         <Routes>
-          <Route path={ERoutePaths.auth} element={<AuthPage />} />
+          <Route
+            element={
+              <AuthRoute>
+                <AuthPage />
+              </AuthRoute>
+            }
+          >
+            <Route path={ERoutePaths.auth} element={<AuthPage />} />
+          </Route>
 
-          <Route element={<PrivateRoute />}>
+          <Route
+            element={
+              <PrivateRoute>
+                <MainPage />
+              </PrivateRoute>
+            }
+          >
             <Route path={ERoutePaths.main} element={<MainPage />} />
           </Route>
 

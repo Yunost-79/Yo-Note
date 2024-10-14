@@ -4,12 +4,13 @@ import AuthInput from '../../../components/UI/mui/Inputs/AuthInput/AuthInput';
 import AuthButton from '../../../components/UI/mui/Buttons/AuthButton/AuthButton';
 
 import '../AuthPage.scss';
+import { FC } from 'react';
 
 interface Login {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Login: React.FC<Login> = ({ setIsLogin }) => {
+const Login: FC<Login> = ({ setIsLogin }) => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };

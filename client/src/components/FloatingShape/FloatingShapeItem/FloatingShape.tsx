@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
 
 import './FloatingShape.scss';
@@ -11,7 +11,7 @@ interface IFloatingShape {
   delay: number;
 }
 
-const FloatingShape: React.FC<IFloatingShape> = ({ color, size, top, left, delay }) => {
+const FloatingShape: FC<IFloatingShape> = ({ color, size, top, left, delay }) => {
   return (
     <motion.div
       className="floating_shape_item"

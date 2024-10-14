@@ -1,4 +1,4 @@
-@import '../../index.scss';
+@import '../../variables/globalVariables.scss';
 
 .auth_wrapper {
   display: flex;
@@ -8,6 +8,7 @@
   width: 100%;
   height: 100vh;
   color: $WHITE;
+  background-image: $DARK_BACKGROUND_GRADIENT;
 
   .auth_container {
     display: flex;
@@ -22,14 +23,14 @@
     width: 100%;
     margin: 0 1rem;
 
-    background-color: rgba($DARK_PRIMAL_GREEN, 0.5);
+    background-color: rgba($DARK_PRIMAL_BLUE, 0.5);
     color: $DARK_PRIMAL_GREY;
 
     .auth_title {
       h1 {
         font-size: 2rem;
         font-weight: 600;
-        color: $DARK_SECONDARY_GREEN;
+        color: $MINT;
       }
     }
 
@@ -46,7 +47,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    background-color: rgba($DARK_PRIMAL_GREEN, 0.85);
+    background-color: rgba($DARK_PRIMAL_BLUE, 0.85);
     padding: 1.5rem;
     border-radius: 0 0 1.5rem 1.5rem;
     max-width: 28rem;
@@ -58,11 +59,11 @@
     a {
       text-decoration: none;
       cursor: pointer;
-      color: rgba($DARK_SECONDARY_GREEN, 0.8);
+      color: rgba($MINT, 0.8);
       transition: 0.3s ease;
 
       &:hover {
-        color: rgba($DARK_SECONDARY_GREEN, 1);
+        color: rgba($MINT, 1);
       }
     }
   }

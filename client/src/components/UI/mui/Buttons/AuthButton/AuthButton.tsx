@@ -1,5 +1,5 @@
+import { FC } from 'react';
 import { Button } from '@mui/material';
-import React from 'react';
 
 import './AuthButton.scss';
 
@@ -9,7 +9,7 @@ interface AuthButton {
   type?: 'submit' | 'button' | 'reset';
   onClick?: () => void;
 }
-const AuthButton: React.FC<AuthButton> = ({ className, placeholder, type, onClick }) => {
+const AuthButton: FC<AuthButton> = ({ className, placeholder, type, onClick }) => {
   return (
     <Button
       className={`auth_button ${className}`}

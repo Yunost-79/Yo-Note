@@ -1,10 +1,10 @@
-import { FC, FocusEvent, useEffect, useState } from 'react';
+import { FC, FocusEvent } from 'react';
 import { FormHelperText, IconButton, InputBase, Paper } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import './AuthInput.scss';
+import SearchIcon from '@mui/icons-material/Search';
 
-interface AuthInput {
+import './NoteTableInput.scss';
+
+interface NoteTableInput {
   className?: string;
   name?: string;
   type: string;
@@ -16,7 +16,7 @@ interface AuthInput {
   helperText?: string | false | undefined;
 }
 
-const AuthInput: FC<AuthInput> = ({
+const NoteTableInput: FC<NoteTableInput> = ({
   className,
   name,
   type,
@@ -27,36 +27,26 @@ const AuthInput: FC<AuthInput> = ({
   error,
   helperText,
 }) => {
-  const [isShowText, setIsShowText] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (type === 'text') {
-      setIsShowText(false);
-    }
-  }, [type]);
-
   return (
     <div className={`input ${className ? className : ''} ${error ? 'error' : ''}`}>
       <Paper className="input_form">
         <InputBase
-          className={`input_item ${type === 'password' && !isShowText ? 'password' : ''}`}
+          className="input_item"
           placeholder={placeholder}
           value={value}
           name={name}
-          type={type === 'password' && isShowText ? 'text' : type}
+          type={type}
           onChange={onChange}
           onBlur={onBlur}
         />
-        {type === 'password' && (
-          <IconButton
-            className={`button show_button ${value ? 'show' : ''}`}
-            type="button"
-            aria-label="show-input"
-            onClick={() => setIsShowText(!isShowText)}
-          >
-            {isShowText ? <VisibilityIcon /> : <VisibilityOffIcon />}
-          </IconButton>
-        )}
+        <IconButton
+          className={`button`}
+          type="button"
+          aria-label="show-input"
+          //   onClick={() => setIsShowText(!isShowText)}
+        >
+          <SearchIcon />
+        </IconButton>
       </Paper>
       {helperText && (
         <FormHelperText className="helper-text" error={error}>
@@ -67,4 +57,4 @@ const AuthInput: FC<AuthInput> = ({
   );
 };
 
-export default AuthInput;
+export default NoteTableInput;

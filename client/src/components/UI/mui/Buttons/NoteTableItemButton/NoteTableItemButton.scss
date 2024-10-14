@@ -1,0 +1,27 @@
+@import '../../../../../variables/globalVariables.scss';
+
+button {
+  transition: 0.3s ease;
+
+  &.pin {
+    &:hover {
+      color: $MINT;
+    }
+
+    &.active {
+      color: $MINT;
+    }
+  }
+
+  &.edit {
+    &:hover {
+      color: $MINT;
+    }
+  }
+
+  &.delete {
+    &:hover {
+      color: $ERROR;
+    }
+  }
+}

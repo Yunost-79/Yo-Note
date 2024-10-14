@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import './ErrorPageNotFound.scss';
 import AuthButton from '../../components/UI/mui/Buttons/AuthButton/AuthButton';
 import { ERoutePaths } from '../../types/ERoutePaths';
+import AuthFloatingShape from '../../components/FloatingShape/AuthFloatingShape';
 
 const ErrorPageNotFound = () => {
   const navigate = useNavigate();
@@ -11,13 +12,16 @@ const ErrorPageNotFound = () => {
   };
 
   return (
-    <div className="error_wrapper">
-      <div className="error_container">
-        <h1>Oops!</h1>
-        <span>Error 404 - page not found</span>
-        <AuthButton onClick={handleNavigate} placeholder="Go to homepage" />
+    <>
+      <AuthFloatingShape />
+      <div className="error_wrapper">
+        <div className="error_container">
+          <h1>Oops!</h1>
+          <span>Error 404 - page not found</span>
+          <AuthButton onClick={handleNavigate} placeholder="Go to homepage" />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
