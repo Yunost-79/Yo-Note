@@ -1,0 +1,112 @@
+@import '../../variables/globalVariables.scss';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 0.75rem;
+  width: 100%;
+  max-width: 5rem;
+  background-color: $DARK_PRIMAL_BLUE;
+  transition: 0.3s ease;
+
+  z-index: $higherZIndex;
+
+  &.open {
+    max-width: 12rem;
+    transition: 0.3s ease;
+
+    .sidebar_content {
+      width: 100%;
+      transition: 0.3s ease;
+
+      .sidebar_user_info,
+      .sidebar_setting {
+        display: flex;
+        justify-content: start;
+        transition: 0.5s ease;
+        gap: 0.5rem;
+
+        span {
+          display: flex;
+          font-weight: 600;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+
+          &.show {
+            opacity: 1;
+            transition: 0.3s ease;
+          }
+        }
+      }
+      .sidebar_setting {
+        margin-bottom: 2rem;
+      }
+
+      .sidebar_logo {
+        .logo_text {
+          opacity: 0;
+          transition: 0.3s ease;
+
+          &.show {
+            opacity: 1;
+            transition: 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar_content {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: $GREY;
+    transition: 0.3s ease;
+
+    .sidebar_user_info,
+    .sidebar_setting,
+    .sidebar_logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s ease;
+
+      .icon {
+        width: 2rem;
+        height: 2rem;
+
+        &.icon_logo {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+    }
+
+    .sidebar_setting {
+      margin-bottom: 2rem;
+    }
+
+    .sidebar_logo {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+
+      .logo_text {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: $MINT;
+      }
+    }
+
+    .sidebar_list {
+      flex: 1 1 auto;
+    }
+  }
+}

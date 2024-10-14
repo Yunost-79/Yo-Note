@@ -1,0 +1,22 @@
+@import '../../../../../variables/globalVariables.scss';
+
+.auth_button.MuiButtonBase-root {
+  width: 100%;
+  padding: 0.5rem;
+  color: $WHITE;
+  background-color: rgba($MINT, 0.6);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-transform: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: rgba($MINT, 1);
+  }
+
+  &:active {
+    background-color: rgba($DARK_PRIMAL_GREY, 0.6);
+    color: $MINT;
+  }
+}

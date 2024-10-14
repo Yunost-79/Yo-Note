@@ -1,0 +1,19 @@
+@import '../../variables/globalVariables.scss';
+
+.note_wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  overflow: auto;
+
+  .content {
+    flex-grow: 1;
+    margin-left: 5rem;
+    // padding: 1rem;
+
+    .note_table {
+      color: #000;
+      z-index: $standardZIndex;
+    }
+  }
+}
