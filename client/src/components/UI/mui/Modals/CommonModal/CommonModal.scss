@@ -1,0 +1,30 @@
+@import '../../../../../variables/globalVariables.scss';
+
+.MuiModal-root {
+  outline: none;
+  border: none;
+
+  .MuiBox-root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $WHITE;
+    border-radius: 0.5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+
+    h2 {
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .modal_buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}

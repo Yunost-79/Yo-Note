@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import Cookies from 'js-cookie';
 import { ETheme } from '../types/ETheme';
 
 type ThemeState = {
@@ -6,20 +7,14 @@ type ThemeState = {
   toggleTheme: () => void;
 };
 
-export const useThemeStore = create<ThemeState>((set) => {
-  const savedTheme = localStorage.getItem('theme') === 'false';
-
-  const toggleTheme = () => {
+export const useThemeStore = create<ThemeState>((set) => ({
+  theme: Cookies.get('theme') === 'false',
+  toggleTheme: () => {
     set((state) => {
       const newTheme = !state.theme;
       document.body.id = newTheme ? ETheme.dark : ETheme.light;
-      localStorage.setItem('theme', JSON.stringify(newTheme));
+      Cookies.set('theme', JSON.stringify(newTheme));
       return { theme: newTheme };
     });
-  };
-
-  return {
-    theme: savedTheme ?? false,
-    toggleTheme,
-  };
-});
+  },
+}));

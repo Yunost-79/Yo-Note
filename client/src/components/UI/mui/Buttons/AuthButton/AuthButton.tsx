@@ -6,7 +6,7 @@ import './AuthButton.scss';
 interface AuthButton {
   className?: string;
   placeholder: string;
-  type?: 'submit' | 'button' | 'reset';
+  type: 'submit' | 'button' | 'reset' | undefined ;
   onClick?: () => void;
 }
 const AuthButton: FC<AuthButton> = ({ className, placeholder, type, onClick }) => {

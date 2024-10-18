@@ -1,8 +1,8 @@
-import './NoteTable.scss';
 
 import NoteTableItem from './NoteTableItem/NoteTableItem';
 
 import NoteTableInput from '../UI/mui/Inputs/NoteTableInput/NoteTableInput';
+import './NoteTable.scss';
 
 const NoteTable = () => {
   return (

@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
-import Register from './components/Register';
+import { useEffect } from 'react';
+
 import Login from './components/Login';
+import Register from './components/Register';
+import { useLoginStore } from '../../zustand/LoginStore/useLoginStore';
 import AuthFloatingShape from '../../components/FloatingShape/AuthFloatingShape';
 
 const AuthPage = () => {
-  const getInitialLoginState = (): boolean => {
-    return localStorage.getItem('isLogin') === 'true';
-  };
-
-  const [isLogin, setIsLogin] = useState<boolean>(getInitialLoginState);
+  const { isLogin, setIsLogin } = useLoginStore();
 
   useEffect(() => {
-    localStorage.setItem('isLogin', String(isLogin)); // Store as a string ('true'/'false')
-  }, [isLogin]);
+    setIsLogin(isLogin);
+  }, [isLogin, setIsLogin]);
 
   return (
     <>

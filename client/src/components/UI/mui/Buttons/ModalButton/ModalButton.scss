@@ -1,0 +1,21 @@
+@import '../../../../../variables/globalVariables.scss';
+
+.MuiButtonBase-root.modal_button {
+  max-width: 6rem;
+  width: 100%;
+
+  &.positive {
+    background-color: rgba($MINT, 0.9);
+
+    &:hover {
+      background-color: rgba($MINT, 1);
+    }
+  }
+  &.negative {
+    background-color: rgba($ERROR, 0.9);
+
+    &:hover {
+      background-color: rgba($ERROR, 1);
+    }
+  }
+}

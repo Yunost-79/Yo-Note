@@ -24,7 +24,9 @@
       transition: 0.3s ease;
 
       .sidebar_user_info,
-      .sidebar_setting {
+      .sidebar_bottom,
+      .sidebar_logout {
+        
         display: flex;
         justify-content: start;
         transition: 0.5s ease;
@@ -43,8 +45,21 @@
           }
         }
       }
-      .sidebar_setting {
+      .sidebar_bottom {
         margin-bottom: 2rem;
+
+        .item {
+          width: 100%;
+          display: flex;
+          justify-content: start;
+          gap: 0.5rem;
+          cursor: pointer;
+          transition: 0.1s ease;
+
+          &:hover {
+            color: $MINT;
+          }
+        }
       }
 
       .sidebar_logo {
@@ -71,7 +86,7 @@
     transition: 0.3s ease;
 
     .sidebar_user_info,
-    .sidebar_setting,
+    .sidebar_bottom,
     .sidebar_logo {
       display: flex;
       justify-content: center;
@@ -81,6 +96,7 @@
       .icon {
         width: 2rem;
         height: 2rem;
+        border-radius: 50%;
 
         &.icon_logo {
           width: 2.5rem;
@@ -89,7 +105,9 @@
       }
     }
 
-    .sidebar_setting {
+    .sidebar_bottom {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 2rem;
     }
 

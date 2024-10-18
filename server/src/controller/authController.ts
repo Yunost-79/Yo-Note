@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import { EStatusCodes } from '../types/EStatusCodes';
 import User from '../models/userModel';
 import generateTokenAndSetCookie from '../token/generateTokenAndSetCookie';
+import { text } from 'stream/consumers';
+import { profile } from 'console';
 
 type TypedRequestBody<T> = Request<{}, {}, T>;
 
@@ -25,18 +27,24 @@ export const register = async (req: TypedRequestBody<RegisterRequestBody>, res: 
   try {
     const { email, username, password, rePassword } = req.body;
     if (password !== rePassword) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: "Passwords don't match" });
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { text: "Passwords don't match", type: 'password' } });
     }
 
     const currentUser = await User.findOne({ username });
 
     if (currentUser) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Username already exists' });
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { text: 'Username already exists', type: 'username' } });
     }
     const currentEmail = await User.findOne({ email });
 
     if (currentEmail) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Email already exists' });
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { text: 'Email already exists', type: 'email' } });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -89,30 +97,40 @@ export const login = async (req: TypedRequestBody<LoginRequestBody>, res: Respon
       currentUser = await User.findOne({ email: usernameOrEmail });
 
       if (!currentUser) {
-        return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid email' });
+        return res
+          .status(EStatusCodes.BAD_REQUEST)
+          .json({ error: { text: 'Invalid email', type: 'usernameOrEmail' } });
       }
     } else {
       currentUser = await User.findOne({ username: usernameOrEmail });
 
       if (!currentUser) {
-        return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid username' });
+        return res
+          .status(EStatusCodes.BAD_REQUEST)
+          .json({ error: { text: 'Invalid username', type: 'usernameOrEmail' } });
       }
     }
 
     const isCorrectPassword = await bcrypt.compare(password, currentUser.password || '');
 
     if (!isCorrectPassword) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid password' });
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { text: 'Invalid password', type: 'password' } });
     }
 
     generateTokenAndSetCookie(currentUser._id, res);
 
-    res.status(EStatusCodes.OK).json({
-      _id: currentUser._id,
-      username: currentUser.username,
-      email: currentUser.email,
-      profileAvatar: currentUser.profileAvatar,
-    });
+    res
+      .status(EStatusCodes.OK)
+      .json({
+        data: {
+          id: currentUser._id,
+          username: currentUser.username,
+          profileAvatar: currentUser.profileAvatar,
+        },
+        message: `User with ID ${currentUser._id} logged in successfully`,
+      });
   } catch (e) {
     const err = e as Error;
 
